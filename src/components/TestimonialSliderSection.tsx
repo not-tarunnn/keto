@@ -8,13 +8,13 @@ const testimonials = [
   {
     name: "Sophia L.",
     rating: 5,
-    text: "These cookies are absolute luxury. I didn't expect keto to taste this good! Highly recommended for anyone on a guilt-free sweet journey.",
+    text: "These cookies are absolute luxury. I didn&rsquo;t expect keto to taste this good! Highly recommended for anyone on a guilt-free sweet journey.",
     image: "/images/sofia.webp",
   },
   {
     name: "Ethan R.",
     rating: 4,
-    text: "The premium box was full of surprises. The flavors rotate monthly, and it's become my monthly treat.",
+    text: "The premium box was full of surprises. The flavors rotate monthly, and it&rsquo;s become my monthly treat.",
     image: "/images/ethan.webp",
   },
   {
@@ -50,7 +50,7 @@ export default function TestimonialSliderSection() {
               transition={{ duration: 0.6 }}
               className="text-xl font-medium text-gray-300 px-4"
             >
-              "{testimonials[current].text}"
+              &quot;{testimonials[current].text}&quot;
             </motion.p>
           </AnimatePresence>
 

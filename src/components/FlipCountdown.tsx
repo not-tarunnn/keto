@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type TimeLeft = {
   days: string;
@@ -14,12 +14,7 @@ interface FlipCountdownProps {
 }
 
 export default function FlipCountdown({ targetDate }: FlipCountdownProps) {
-  const targetTimestamp = new Date(targetDate).getTime();
-
-  if (isNaN(targetTimestamp)) {
-    console.error('Invalid targetDate:', targetDate);
-    return <p className="text-red-500">Invalid countdown date</p>;
-  }
+  const targetTimestamp = useMemo(() => new Date(targetDate).getTime(), [targetDate]);
 
   const calculateTimeLeft = (): TimeLeft => {
     const now = Date.now();
@@ -38,15 +33,22 @@ export default function FlipCountdown({ targetDate }: FlipCountdownProps) {
     };
   };
 
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => calculateTimeLeft());
 
   useEffect(() => {
+    if (isNaN(targetTimestamp)) return;
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [targetTimestamp]);
+
+  if (isNaN(targetTimestamp)) {
+    console.error('Invalid targetDate:', targetDate);
+    return <p className="text-red-500">Invalid countdown date</p>;
+  }
 
   return (
     <div className="flex justify-center gap-8 text-white font-mono font-bold">

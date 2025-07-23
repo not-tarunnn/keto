@@ -41,7 +41,7 @@ export default function NewDropSection() {
       <div className="relative z-30 text-white max-w-xl ml-auto mr-16 text-right">
         <h2 className="text-5xl font-bold mb-4">Next Drop Coming Soon</h2>
         <p className="text-lg mb-8">
-          Indulge in luxury KETO cookies before they're gone. Set your reminder!
+          Indulge in luxury KETO cookies before they&rsquo;re gone. Set your reminder!
         </p>
 
         {/* Countdown Clock */}

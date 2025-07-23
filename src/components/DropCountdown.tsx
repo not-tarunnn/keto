@@ -1,14 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 const DropCountdown = () => {
   const [timeLeft, setTimeLeft] = useState("");
 
   // Set your next drop date/time here
-  const targetDate = new Date("2025-08-01T12:00:00");
+  const targetDate = useMemo(() => new Date("2025-08-01T12:00:00"), []);
 
   useEffect(() => {
+
     const updateTime = () => {
       const now = new Date().getTime();
       const distance = targetDate.getTime() - now;
